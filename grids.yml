@@ -1,0 +1,316 @@
+# Grid configurations for global ocean modeling regions
+# size_x, size_y in km; rot in degrees CCW from east (xi-axis)
+# rot = -coast_bearing so eta (size_y) runs along-coast
+# Regional grids: 5 km resolution (nx = size_x/5, ny = size_y/5)
+# Basin grids:    100 km resolution
+
+grids:
+
+  # --- Eastern Boundary Upwelling Systems ---
+
+  california_current:
+    # From /Users/mclong/codes/tmp_nested-grid/ccs-grid.yaml (4 km resolution)
+    nx: 672
+    ny: 1320
+    size_x: 2688
+    size_y: 5280
+    center_lon: -134.5
+    center_lat: 39.6
+    rot: 33.3
+    N: 100
+    theta_s: 6.0
+    theta_b: 6.0
+    hc: 250
+    topography_source:
+      name: SRTM15
+      path: /Users/mclong/cson-forge-data/source-data/SRTM/SRTM15_V2.5.nc
+    hmin: 5.0
+
+  humboldt_current:
+    # Full S American west coast, south boundary past Cape Horn (~58°S).
+    # Center shifted E and slightly widened so the E edge flares ~300 km
+    # inland of the coast (Pierre-CCS style), keeping the shoreline firmly
+    # inside the domain rather than at the grid boundary.
+    nx: 440
+    ny: 1300
+    size_x: 2200
+    size_y: 6500
+    center_lon: -78.0
+    center_lat: -27.0
+    rot: 15    # coast bears ~345° (NNW), matches Colombia→Lima trend
+    N: 3
+    theta_s: 5.0
+    theta_b: 2.0
+    hc: 250.0
+    topography_source:
+      name: ETOPO5
+
+  benguela_current:
+    # South Angola to Cape Point (~34.4°S); center shifted W and trimmed so
+    # SE corner stays off interior southern Africa
+    nx: 280
+    ny: 440
+    size_x: 1400
+    size_y: 2200
+    center_lon: 11.0
+    center_lat: -22.0
+    rot: 18    # Namibian coast bears ~342° (NNW)
+    N: 3
+    theta_s: 5.0
+    theta_b: 2.0
+    hc: 250.0
+    topography_source:
+      name: ETOPO5
+
+  canary_current:
+    # Trimmed cross-shore so NE corner stays off the Iberian peninsula
+    nx: 280
+    ny: 760
+    size_x: 1400
+    size_y: 3800
+    center_lon: -18.0
+    center_lat: 25.0
+    rot: -25   # NW African coast bears ~25° (NNE)
+    N: 3
+    theta_s: 5.0
+    theta_b: 2.0
+    hc: 250.0
+    topography_source:
+      name: ETOPO5
+
+  # --- Gulf of Guinea ---
+
+  gulf_of_guinea:
+    # rot=0, xi runs E-W along the equatorial coast; shifted south and
+    # trimmed cross-shore so N edge doesn't push deep into Nigeria/Cameroon
+    nx: 480
+    ny: 300
+    size_x: 2400
+    size_y: 1500
+    center_lon: 3.0
+    center_lat: -2.0
+    rot: 0
+    N: 3
+    theta_s: 5.0
+    theta_b: 2.0
+    hc: 250.0
+    topography_source:
+      name: ETOPO5
+
+  # --- East Africa ---
+
+  east_africa:
+    # Mozambique (~28°S) to Horn of Africa (~10°N); eta tilts NNE along coast.
+    # Trimmed cross-shore so SW corner stays closer to Mozambique coast.
+    nx: 360
+    ny: 900
+    size_x: 1800
+    size_y: 4500
+    center_lon: 41.0
+    center_lat: -10.0
+    rot: -20   # coast bears ~20° (NNE) averaged Mozambique→Somalia
+    N: 3
+    theta_s: 5.0
+    theta_b: 2.0
+    hc: 250.0
+    topography_source:
+      name: ETOPO5
+
+  # --- South Africa (Cape + Agulhas) ---
+
+  south_africa:
+    # West coast (Namibia border to Cape Point) and east coast (Cape Agulhas
+    # to Durban); shifted south and trimmed N-S so it stays off Botswana
+    nx: 480
+    ny: 240
+    size_x: 2400
+    size_y: 1200
+    center_lon: 24.0
+    center_lat: -35.0
+    rot: 0
+    N: 3
+    theta_s: 5.0
+    theta_b: 2.0
+    hc: 250.0
+    topography_source:
+      name: ETOPO5
+
+  # --- Arabian Sea ---
+
+  arabian_sea:
+    # Shifted south and trimmed so N edge stays off Saudi/Iran interior
+    nx: 480
+    ny: 480
+    size_x: 2400
+    size_y: 2400
+    center_lon: 63.0
+    center_lat: 10.0
+    rot: 0     # basin domain
+    N: 3
+    theta_s: 5.0
+    theta_b: 2.0
+    hc: 250.0
+    topography_source:
+      name: ETOPO5
+
+  # --- Western Atlantic (U.S. East Coast + Gulf of Mexico) ---
+
+  western_atlantic:
+    # Center shifted E and trimmed cross-shore so SW corner doesn't cross
+    # central Mexico to the Pacific
+    nx: 700
+    ny: 1100
+    size_x: 3500
+    size_y: 5500
+    center_lon: -75.0
+    center_lat: 30.0
+    rot: -20   # coast bears ~20° (NNE)
+    N: 3
+    theta_s: 5.0
+    theta_b: 2.0
+    hc: 250.0
+    topography_source:
+      name: ETOPO5
+
+  # --- Kuroshio ---
+
+  kuroshio:
+    # China coast (SW corner) to Russia/Kamchatka (NW corner); center
+    # shifted E and trimmed so SW corner sits near eastern China rather
+    # than deep interior
+    nx: 600
+    ny: 900
+    size_x: 3000
+    size_y: 4500
+    center_lon: 140.0
+    center_lat: 40.0
+    rot: -45   # coast/current bears ~45° (NE)
+    N: 3
+    theta_s: 5.0
+    theta_b: 2.0
+    hc: 250.0
+    topography_source:
+      name: ETOPO5
+
+  # --- Mediterranean ---
+
+  mediterranean:
+    # Trimmed E-W so it stops near the Levant rather than reaching Iraq
+    nx: 800
+    ny: 320
+    size_x: 4000
+    size_y: 1600
+    center_lon: 16.0
+    center_lat: 37.0
+    rot: 0     # basin runs nearly E-W
+    N: 3
+    theta_s: 5.0
+    theta_b: 2.0
+    hc: 250.0
+    topography_source:
+      name: ETOPO5
+
+  # --- Northern Europe ---
+
+  northern_europe:
+    # Baltic Sea + North Sea; northern edge ~level with Iceland
+    # Trimmed E-W so E edge stops near the Baltic instead of pushing
+    # into Russia/Belarus
+    nx: 440
+    ny: 500
+    size_x: 2200
+    size_y: 2500
+    center_lon: 14.0
+    center_lat: 56.0
+    rot: 0
+    N: 3
+    theta_s: 5.0
+    theta_b: 2.0
+    hc: 250.0
+    topography_source:
+      name: ETOPO5
+
+  # --- Western Australia ---
+
+  western_australia:
+    # Shifted W and trimmed cross-shore so E edge stops near the WA coast
+    # instead of crossing into the interior
+    nx: 300
+    ny: 700
+    size_x: 1500
+    size_y: 3500
+    center_lon: 112.0
+    center_lat: -26.0
+    rot: 15    # WA coast bears ~345° (NNW)
+    N: 3
+    theta_s: 5.0
+    theta_b: 2.0
+    hc: 250.0
+    topography_source:
+      name: ETOPO5
+
+  # --- Oceania + Maritime Continent ---
+
+  oceania:
+    # Shifted E to start near Indochina rather than reaching into India;
+    # south boundary still ~-20°S (about 1/3 down the Australian continent)
+    nx: 1600
+    ny: 700
+    size_x: 8000
+    size_y: 3500
+    center_lon: 140.0
+    center_lat: -3.0
+    rot: 0
+    N: 3
+    theta_s: 5.0
+    theta_b: 2.0
+    hc: 250.0
+    topography_source:
+      name: ETOPO5
+
+  # --- Basin-scale grids (100 km resolution) ---
+
+  pacific-100km:
+    nx: 230
+    ny: 120
+    size_x: 23000
+    size_y: 12000
+    center_lon: -161.0
+    center_lat: 14.4
+    rot: -3.0
+    N: 3
+    theta_s: 5.0
+    theta_b: 2.0
+    hc: 250.0
+    topography_source:
+      name: ETOPO5
+
+  atlantic-100km:
+    nx: 100
+    ny: 140
+    size_x: 10000
+    size_y: 14000
+    center_lon: -30.0
+    center_lat: 5.0
+    rot: 0
+    N: 3
+    theta_s: 5.0
+    theta_b: 2.0
+    hc: 250.0
+    topography_source:
+      name: ETOPO5
+
+  indian-100km:
+    nx: 110
+    ny: 90
+    size_x: 11000
+    size_y: 9000
+    center_lon: 65.0
+    center_lat: -15.0
+    rot: 0
+    N: 3
+    theta_s: 5.0
+    theta_b: 2.0
+    hc: 250.0
+    topography_source:
+      name: ETOPO5
