@@ -1,4 +1,4 @@
-# cson-views
+# cson-seascapes
 
 Visualizations of the C-Star Ocean Network — a global collection of regional
 and basin-scale ROMS configurations supported by the [C-Star](https://github.com/CWorthy-ocean/C-Star)
@@ -10,13 +10,13 @@ Each rectangle delineates a ROMS grid configuration on a global Robinson
 projection. Perimeter color denotes the validation state of the
 configuration:
 
-- **tab:blue — Scientifically validated:** the configuration's ocean (and
+- **blue — Scientifically validated:** the configuration's ocean (and
   biogeochemical, where applicable) solution has been evaluated against
   observations.
-- **tab:orange — Functionally validated:** the configuration runs end-to-end
+- **orange — Functionally validated:** the configuration runs end-to-end
   and produces a stable solution, but has not yet been scientifically
   validated.
-- **tab:purple — Illustrative of potential extensions to the network:**
+- **purple — Illustrative of potential extensions to the network:**
   candidate domains whose geometries are defined here but which are not yet
   configured.
 
