@@ -44,16 +44,16 @@ grids:
 
   benguela_current:
     state: null
-    # South Angola to Cape Point (~34.4°S); center shifted W and trimmed so
-    # SE corner stays off interior southern Africa
+    # South Angola toward the Cape; rotation reduced so the box aligns with the
+    # near-N-S west coast and the SE corner sits at the shore (not inland)
     grid_kwargs:
       nx: 280
-      ny: 440
+      ny: 520
       size_x: 1400
-      size_y: 2200
+      size_y: 2600
       center_lon: 11.0
-      center_lat: -22.0
-      rot: 18    # Namibian coast bears ~342° (NNW)
+      center_lat: -18.0
+      rot: 10     
       N: 3
       theta_s: 5.0
       theta_b: 2.0
@@ -63,11 +63,11 @@ grids:
     state: null
     # Trimmed cross-shore so NE corner stays off the Iberian peninsula
     grid_kwargs:
-      nx: 360
+      nx: 400
       ny: 840
-      size_x: 1800
+      size_x: 2000
       size_y: 4200
-      center_lon: -15.0
+      center_lon: -17.0
       center_lat: 20.0
       rot: 0   # NW sAfrican coast bears ~25° (NNE)
       N: 3
@@ -79,14 +79,14 @@ grids:
 
   gulf_of_guinea:
     state: null
-    # Shifted up and lengthened cross-shore so N edge reaches the West African
-    # coast (Cote d'Ivoire/Ghana) and the full Gulf is covered
+    # Western boundary pushed out to ~-17°E (about halfway across the Canary
+    # current grid), keeping the eastern Gulf coverage
     grid_kwargs:
-      nx: 480
+      nx: 685
       ny: 340
-      size_x: 2400
+      size_x: 3425
       size_y: 1700
-      center_lon: 3.0
+      center_lon: -1.6
       center_lat: -1.0
       rot: 0
       N: 3
@@ -102,11 +102,11 @@ grids:
     # Trimmed cross-shore so SW corner stays closer to Mozambique coast.
     grid_kwargs:
       nx: 360
-      ny: 900
+      ny: 1000
       size_x: 1800
-      size_y: 4500
+      size_y: 5000
       center_lon: 45.0
-      center_lat: -10.0
+      center_lat: -12.0
       rot: -20   # coast bears ~20° (NNE) averaged Mozambique→Somalia
       N: 3
       theta_s: 5.0
@@ -117,15 +117,15 @@ grids:
 
   south_africa:
     state: null
-    # West coast (Namibia border to Cape Point) and east coast (Cape Agulhas
-    # to Durban); shifted south and trimmed N-S so it stays off Botswana
+    # Cape + Agulhas; widened ~20% in x and extended ~20% further south to take
+    # in more of the Agulhas retroflection and the Southern Ocean fronts
     grid_kwargs:
-      nx: 480
-      ny: 240
-      size_x: 2400
-      size_y: 1200
+      nx: 672
+      ny: 480
+      size_x: 3360
+      size_y: 2400
       center_lon: 24.0
-      center_lat: -35.0
+      center_lat: -36.8
       rot: 0
       N: 3
       theta_s: 5.0
@@ -138,13 +138,32 @@ grids:
     state: null
     # Shifted north and lengthened so N edge reaches the Persian Gulf
     grid_kwargs:
-      nx: 640
+      nx: 720
       ny: 600
-      size_x: 3200
+      size_x: 3600
       size_y: 3000
-      center_lon: 63.0
+      center_lon: 61.0
       center_lat: 18.0
       rot: 0     # basin domain
+      N: 3
+      theta_s: 5.0
+      theta_b: 2.0
+      hc: 250.0
+
+  # --- Red Sea ---
+
+  red_sea:
+    state: null
+    # Narrow NW-SE channel from the Gulfs of Suez/Aqaba down to the
+    # Bab-el-Mandeb strait; eta runs along the basin axis
+    grid_kwargs:
+      nx: 100
+      ny: 440
+      size_x: 500
+      size_y: 2200
+      center_lon: 38.4
+      center_lat: 20.4
+      rot: 31    # -coast_bearing; basin axis bears ~NNW
       N: 3
       theta_s: 5.0
       theta_b: 2.0
@@ -212,15 +231,16 @@ grids:
 
   mediterranean:
     state: null
-    # Trimmed E-W so it stops near the Levant rather than reaching Iraq
+    # Rotated CCW and extended to capture the Black Sea; western edge held at
+    # Gibraltar; enlarged in y to take in the full southern (N African) coast
     grid_kwargs:
-      nx: 800
-      ny: 320
-      size_x: 4000
-      size_y: 1600
-      center_lon: 16.0
-      center_lat: 37.0
-      rot: 0     # basin runs nearly E-W
+      nx: 880
+      ny: 400
+      size_x: 4400
+      size_y: 2000
+      center_lon: 21.0
+      center_lat: 39.5
+      rot: 8     # CCW tilt lifts the eastern end up to the Black Sea
       N: 3
       theta_s: 5.0
       theta_b: 2.0
