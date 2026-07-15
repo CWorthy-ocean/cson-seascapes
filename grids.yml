@@ -23,6 +23,49 @@ grids:
       theta_b: 6.0
       hc: 250
 
+  ca_1km:
+    state: null
+    # Nested inside california_current (CCS). Covers the California coast
+    # (Cape Mendocino through Point Conception) plus a wide offshore margin.
+    # A single rotated rectangle can't hug both the NNW- and W-trending
+    # coastal segments at once, so the cross-shore extent (936 km) is wide
+    # enough that the (curved) real coastline stays safely inside the onshore
+    # edge everywhere along the domain, not just at the center latitude. The
+    # center sits well offshore so most of that width is ocean rather than
+    # interior land. Widened ~80% and lengthened ~50% relative to the initial
+    # 520x1100 km footprint.
+    grid_kwargs:
+      nx: 936
+      ny: 1650
+      size_x: 936
+      size_y: 1650
+      center_lon: -125.0
+      center_lat: 37.4
+      rot: 27.6
+      N: 3
+      theta_s: 5.0
+      theta_b: 2.0
+      hc: 250.0
+
+  montereybay_300m:
+    state: null
+    # Nested inside ca_1km. Footprint and rotation matched to NOAA's
+    # WCOFS_150_MONTEREY_BAY nest (derived from its lon_rho/lat_rho/angle
+    # fields), at 300m resolution. Covers the bay mouth/submarine canyon,
+    # open shelf to the west, and both shores (Santa Cruz N, Point Lobos S).
+    grid_kwargs:
+      nx: 252
+      ny: 438
+      size_x: 75.6
+      size_y: 131.4
+      center_lon: -122.23
+      center_lat: 36.78
+      rot: 21.5
+      N: 3
+      theta_s: 5.0
+      theta_b: 2.0
+      hc: 250.0
+
   humboldt_current:
     state: null
     # Full S American west coast, south boundary past Cape Horn (~58°S).
